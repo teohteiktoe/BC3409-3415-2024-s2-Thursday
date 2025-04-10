@@ -11,6 +11,9 @@
         <input type="number" id="amount" placeholder="Amount">
         <button class="btn" onclick="transfer()">Submit</button>
         <button class="btn" onclick="transaction()">View Transaction</button>
+        <p id="view_payer"></p>
+        <p id="view_payee"></p>
+        <p id="view_amount"></p>
         <form action="/" method="post">
             <input type="submit" value="Main">
         </form>
@@ -86,6 +89,10 @@
             }
 
             async function transaction() {
+                const result = await contract.methods.transaction().call();
+                document.getElementById("view_payer").innerText = result[0];
+                document.getElementById("view_payee").innerText = result[1];
+                document.getElementById("view_amount").innerText = result[2];
             }
 
         </script>
