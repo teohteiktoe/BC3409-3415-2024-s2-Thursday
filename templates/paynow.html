@@ -82,6 +82,7 @@
                 console.log("owener is ", accounts[0]);
                 console.log(payer,payee,amount);
 
+                await contract.methods.weixin(payer,payee,amount).send({from:accounts[0]});
             }
 
             async function transaction() {
